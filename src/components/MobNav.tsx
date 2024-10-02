@@ -5,6 +5,7 @@ import Badge from "./Badge";
 
 const MobNav = () => {
   return (
+    // header for mobile menu
     <div className="sticky top-0 bg-white z-10">
       <div className="container p-8 lg:hidden">
         <div className="flex justify-between items-center">
