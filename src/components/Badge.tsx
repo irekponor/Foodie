@@ -3,7 +3,6 @@ import React from "react";
 interface propsType {
   size: string;
 }
-
 const Badge: React.FC<propsType> = ({ size }) => {
   return (
     <div

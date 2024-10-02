@@ -9,7 +9,7 @@ export default {
       },
       container: {
         center: true,
-        padding: "25px",
+        padding: "45px",
       },
     },
   },
