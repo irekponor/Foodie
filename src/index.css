@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+    .icon__wrapper{
+        @apply border rounded-full border-gray-600 w-[50px] h-[50px] grid place-items-center text-[22px]
+    }
+}

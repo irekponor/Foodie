@@ -1,3 +1,4 @@
+import { AiOutlineShoppingCart, AiOutlineUser } from "react-icons/ai";
 import { BsSearch } from "react-icons/bs";
 
 const Navbar = () => {
@@ -12,7 +13,18 @@ const Navbar = () => {
               type="text"
               placeholder="Search..."
             />
-            <BsSearch />
+            <BsSearch
+              className="top-0 absolute right-0 mt-4 mr-5 text-gray-500"
+              size={15}
+            />
+          </div>
+          <div className="flex gap-4">
+            <div className="icon__wrapper">
+              <AiOutlineUser />
+            </div>
+            <div className="icon__wrapper relative">
+              <AiOutlineShoppingCart />
+            </div>
           </div>
         </div>
       </div>
