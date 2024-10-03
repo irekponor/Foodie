@@ -3,25 +3,25 @@ import img2 from "../assets/img2.jpg";
 const data = [
   {
     id: 0,
-    name: "Fresh Fruits",
+    name: "Ice Cream",
     count: "9 products",
     img: <img src={img2} alt="" />,
   },
   {
     id: 1,
-    name: "Fresh Fruits",
+    name: "Ice Cream",
     count: "8 products",
     img: <img src={img2} alt="" />,
   },
   {
     id: 2,
-    name: "Fresh Fruits",
+    name: "Ice Cream",
     count: "9 products",
     img: <img src={img2} alt="" />,
   },
   {
     id: 3,
-    name: "Fresh Fruits",
+    name: "Ice Cream",
     count: "9 products",
     img: <img src={img2} alt="" />,
   },
