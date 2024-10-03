@@ -7,6 +7,7 @@ import BreakFast from "./components/BreakFast";
 import Banner from "./components/Banner";
 import Blog from "./components/Blog";
 import News from "./components/News";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Banner />
       <Blog />
       <News />
+      <Footer />
     </>
   );
 }
