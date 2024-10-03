@@ -3,6 +3,8 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Category from "./components/Category";
 import Feature from "./components/Feature";
+import BreakFast from "./components/BreakFast";
+import Banner from "./components/Banner";
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
       <Hero />
       <Category />
       <Feature />
+      <BreakFast />
+      <Banner />
     </>
   );
 }
