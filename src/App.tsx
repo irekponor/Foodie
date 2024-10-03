@@ -6,6 +6,7 @@ import Feature from "./components/Feature";
 import BreakFast from "./components/BreakFast";
 import Banner from "./components/Banner";
 import Blog from "./components/Blog";
+import News from "./components/News";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <BreakFast />
       <Banner />
       <Blog />
+      <News />
     </>
   );
 }
