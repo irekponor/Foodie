@@ -8,20 +8,26 @@ import Banner from "./components/Banner";
 import Blog from "./components/Blog";
 import News from "./components/News";
 import Footer from "./components/Footer";
+import { CartContextProvider } from "./context/CartContext";
+import { useState } from "react";
 
 function App() {
+  const [showCart, setShowCart] = useState(false);
+
   return (
     <>
-      <Navbar />
-      <MobNav />
-      <Hero />
-      <Category />
-      <Feature />
-      <BreakFast />
-      <Banner />
-      <Blog />
-      <News />
-      <Footer />
+      <CartContextProvider>
+        <Navbar />
+        <MobNav />
+        <Hero />
+        <Category />
+        <Feature />
+        <BreakFast />
+        <Banner />
+        <Blog />
+        <News />
+        <Footer />
+      </CartContextProvider>
     </>
   );
 }

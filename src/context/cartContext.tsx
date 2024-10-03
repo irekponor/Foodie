@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, ReactNode, useState } from "react";
 
 interface ICartContext {
   product: unknown[];
@@ -33,10 +33,4 @@ export const CartContextProvider = ({ children }: ICartContextProvider) => {
   );
 };
 
-export const useCartContext = () => {
-  const context = useContext(CartContext);
-  if (!context) {
-    throw new Error("useCartContext must be used within a CartContextProvider");
-  }
-  return context;
-};
+export default CartContext;
