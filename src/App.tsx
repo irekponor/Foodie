@@ -5,6 +5,7 @@ import Category from "./components/Category";
 import Feature from "./components/Feature";
 import BreakFast from "./components/BreakFast";
 import Banner from "./components/Banner";
+import Blog from "./components/Blog";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Feature />
       <BreakFast />
       <Banner />
+      <Blog />
     </>
   );
 }
