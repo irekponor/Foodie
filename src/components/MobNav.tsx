@@ -3,7 +3,7 @@ import { BsSearch } from "react-icons/bs";
 import { IoIosMenu } from "react-icons/io";
 import Badge from "./Badge";
 
-const MobNav = () => {
+const MobNav = ({ setShowCart }: { setShowCart: (show: boolean) => void }) => {
   return (
     // header for mobile menu
     <div className="sticky top-0 bg-white z-10">
@@ -19,7 +19,10 @@ const MobNav = () => {
           <div className="flex gap-4 text-[30px]">
             <AiOutlineUser />
           </div>
-          <div className="relative cursor-pointer">
+          <div
+            className="relative cursor-pointer"
+            onClick={() => setShowCart(true)}
+          >
             <AiOutlineShoppingCart size={30} />
             <Badge size="w-[20px] h-[20px]" />
           </div>

@@ -15,7 +15,7 @@ const Cart = ({ setShowCart }: { setShowCart: (show: boolean) => void }) => {
         onClick={(e) => e.stopPropagation()}
       >
         <RxCross1
-          className="abolute right-0 top-0 m-6 text-[24px] cursor-pointer"
+          className="absolute right-0 top-0 m-6 text-[24px] cursor-pointer"
           onClick={() => setShowCart(false)}
         />
         <h3 className="pt-6 text-lg font-medium text-gray-600 uppercase">

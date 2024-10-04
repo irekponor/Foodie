@@ -28,7 +28,7 @@ function App() {
         <Blog />
         <News />
         <Footer />
-        {showCart && <Cart showCart={showCart} setShowCart={setShowCart} />}
+        {showCart && <Cart setShowCart={setShowCart} />}
       </CartContextProvider>
     </>
   );
