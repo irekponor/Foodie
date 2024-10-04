@@ -69,15 +69,11 @@ const Feature = () => {
 
         {data.map((d) => (
           <div
-            key={d.id} // Set a unique key for each item
+            key={d.id} // using a unique key for each item
             className="border border-gray-200 hover:border-gray-300 hover:scale-105 transition-transform 
       rounded-lg relative"
           >
-            <img
-              src={d.img}
-              alt={d.name}
-              className="h-full w-full object-cover"
-            />
+            <img src={d.img} />
             <div className="space-y-2 relative p-4">
               <div className="text-yellow-400 flex gap-[2px] text-[20px]">
                 <AiFillStar />
