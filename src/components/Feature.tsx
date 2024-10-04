@@ -4,6 +4,7 @@ import berry from "../assets/berry.jpg";
 import fruit from "../assets/fruit.jpg";
 import fruitss from "../assets/fruitss.jpg";
 import orange from "../assets/orange.jpg";
+import { useCartContext } from "../context/UseCartContext";
 
 // data
 const data = [
@@ -24,6 +25,13 @@ const data = [
 ];
 
 const Feature = () => {
+  const { addToCart } = useCartContext();
+
+  const addProductToCart = () => {
+    //  toast.success("Added to cart!");
+    addToCart({ img, name, price });
+  };
+
   return (
     <div className="container pt-16">
       <div className="lg:flex justify-between items-center">
@@ -74,6 +82,7 @@ const Feature = () => {
               <button
                 className="absolute -top-4 right-2 bg-color1 text-white text-[28px] w-[50px] h-[50px]
          rounded-full grid place-items-center cursor-pointer"
+                onClick={addProductToCart}
               >
                 <AiOutlineShopping />
               </button>
