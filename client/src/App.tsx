@@ -1,21 +1,12 @@
-import MobNav from "./components/MobNav";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Category from "./components/Category";
-import Feature from "./components/Feature";
-import BreakFast from "./components/BreakFast";
-import Banner from "./components/Banner";
-import Blog from "./components/Blog";
-import News from "./components/News";
-import Footer from "./components/Footer";
-import { CartContextProvider } from "./context/CartContext";
-import { useState, useEffect } from "react";
-import Cart from "./components/Cart";
+import { useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import axios from "axios";
+import Register from "./pages/register";
+import Login from "./pages/login";
+import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
 
 function App() {
-  const [showCart, setShowCart] = useState(false);
-
   const fetchAPI = async () => {
     const response = await axios.get("http://localhost:7000/api");
 
@@ -28,19 +19,13 @@ function App() {
 
   return (
     <>
-      <CartContextProvider>
-        <Navbar setShowCart={setShowCart} />
-        <MobNav setShowCart={setShowCart} />
-        <Hero />
-        <Category />
-        <Feature />
-        <BreakFast />
-        <Banner />
-        <Blog />
-        <News />
-        <Footer />
-        {showCart && <Cart setShowCart={setShowCart} />}
-      </CartContextProvider>
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path="/" element={<Home />} />
+        <Route path="login" element={<Login />} />
+        <Route path="" element={<Register />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </>
   );
 }
