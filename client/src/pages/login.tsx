@@ -8,7 +8,7 @@ const Login = () => {
   }>({});
 
   useEffect(() => {
-    // Simulating fetching messages
+    // fetching messages
     const fetchMessages = async () => {
       // Example API call to get messages
       const res = await fetch("/api/flash-messages");
