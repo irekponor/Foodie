@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import axios from "axios";
-import Register from "./pages/register";
-import Login from "./pages/login";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   const fetchAPI = async () => {
@@ -23,7 +23,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="/" element={<Home />} />
         <Route path="login" element={<Login />} />
-        <Route path="" element={<Register />} />
+        <Route path="register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
