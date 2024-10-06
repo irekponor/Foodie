@@ -2,7 +2,7 @@ const Login = () => {
   return (
     <div id="contact" className="max-w-[1040px] m-auto md:pl-20 p-4 py-16">
       <h1 className="py-4 text-4xl font-bold text-center tracking-[5px]">
-        LOGIN
+        SIGN IN
       </h1>
       <form action="" method="POST">
         <div className="pl-20 pr-10 grid md:grid-cols-2 gap-4"></div>
