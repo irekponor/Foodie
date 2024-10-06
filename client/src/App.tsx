@@ -9,11 +9,22 @@ import Blog from "./components/Blog";
 import News from "./components/News";
 import Footer from "./components/Footer";
 import { CartContextProvider } from "./context/CartContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Cart from "./components/Cart";
+import axios from "axios";
 
 function App() {
   const [showCart, setShowCart] = useState(false);
+
+  const fetchAPI = async () => {
+    const response = await axios.get("http://localhost:7000/api");
+
+    console.log(response.data.food);
+  };
+
+  useEffect(() => {
+    fetchAPI();
+  }, []);
 
   return (
     <>
