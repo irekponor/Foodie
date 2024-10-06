@@ -5,7 +5,11 @@ const NotFound = () => {
         <h1>404 - Page Not Found</h1>
         <p>Sorry, the page you seek does not exist.</p>
         <p>
-          You can always go back to the <a href="/">Home</a> page...
+          You can always go back to the{" "}
+          <a className="text-color1" href="/">
+            Home
+          </a>{" "}
+          page...
         </p>
       </div>
     </div>
