@@ -11,7 +11,6 @@ import Footer from "./components/Footer";
 import { CartContextProvider } from "./context/CartContext";
 import { useState, useEffect } from "react";
 import Cart from "./components/Cart";
-import Login from "./pages/login";
 import axios from "axios";
 
 function App() {
@@ -29,7 +28,6 @@ function App() {
 
   return (
     <>
-      <Login />
       <CartContextProvider>
         <Navbar setShowCart={setShowCart} />
         <MobNav setShowCart={setShowCart} />
