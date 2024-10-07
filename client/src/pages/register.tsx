@@ -1,10 +1,50 @@
-const Register = () => {
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+const Register: React.FC = () => {
+  const navigate = useNavigate();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    // Simple validation
+    if (!name || !email || !password) {
+      setError("Please fill in all fields.");
+      return;
+    }
+
+    try {
+      const response = await fetch("/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, password }),
+      });
+
+      if (response.ok) {
+        navigate("/login");
+      } else {
+        const errorData = await response.json();
+        setError(errorData.error || "Registration failed.");
+      }
+    } catch (error) {
+      console.error(error);
+      setError("An error occurred. Please try again.");
+    }
+  };
+
   return (
     <div id="contact" className="max-w-[1040px] m-auto md:pl-20 p-4 py-16">
       <h1 className="py-4 text-4xl font-bold text-center tracking-[5px]">
         SIGN UP
       </h1>
-      <form action="" method="POST">
+      {error && <p className="text-red-500 text-center">{error}</p>}
+      <form onSubmit={handleSubmit}>
         <div className="pl-20 pr-10 grid md:grid-cols-2 gap-4"></div>
         <div className="pl-20 pr-10">
           <div className="flex flex-col py-2">
@@ -15,6 +55,8 @@ const Register = () => {
               className="border-2 rounded-lg p-3 flex border-gray-500"
               type="text"
               name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
           </div>
           <div className="flex flex-col py-2">
@@ -25,6 +67,8 @@ const Register = () => {
               className="border-2 rounded-lg p-3 flex border-gray-500"
               type="email"
               name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="flex flex-col py-2">
@@ -35,6 +79,8 @@ const Register = () => {
               className="border-2 rounded-lg p-3 flex border-gray-500"
               type="password"
               name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <button

@@ -29,11 +29,13 @@ initializePassport(
 
 const users = [];
 
+app.use(express.json());
+
 app.use(cors(corsOptions));
 app.use(flash());
 app.use(
   session({
-    secret: process.env.SECRET_KEY, // the secret_key should be what you used in the .env file
+    secret: process.env.SECRET_KEY, // the secret_key should be what is in your .env file
     resave: false, // if nothing is changed dont resave variable
     saveUninitialized: false,
   })
@@ -55,18 +57,28 @@ app.post(
 // register post configure
 app.post("/register", async (req, res) => {
   try {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10); // 10 is a standard way of creating hashedpwd
+    const { name, email, password } = req.body;
+
+    // Check if user already exists (pseudo-check)
+    const existingUser = users.find((user) => user.email === email);
+    if (existingUser) {
+      return res.status(400).json({ error: "User already exists" });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
     users.push({
       id: Date.now().toString(),
-      name: req.body.name,
-      email: req.body.email,
+      name,
+      email,
       password: hashedPassword,
     });
+
     console.log(users);
-    res.redirect("/login");
+    // Return a success response
+    return res.status(201).json({ message: "User registered successfully" });
   } catch (e) {
-    console.log(e);
-    res.redirect("/register");
+    console.error(e);
+    return res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
