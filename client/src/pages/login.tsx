@@ -4,7 +4,7 @@ const Login = () => {
       <h1 className="py-4 text-4xl font-bold text-center tracking-[5px]">
         SIGN IN
       </h1>
-      <form action="" method="POST">
+      <form action="/login" method="POST">
         <div className="pl-20 pr-10 grid md:grid-cols-2 gap-4"></div>
         <div className="pl-20 pr-10">
           <div className="flex flex-col py-2">
