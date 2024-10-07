@@ -11,14 +11,14 @@ const Register: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Simple validation
+    // validations
     if (!name || !email || !password) {
       setError("Please fill in all fields.");
       return;
     }
 
     try {
-      const response = await fetch("/register", {
+      const response = await fetch("http://localhost:7000/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

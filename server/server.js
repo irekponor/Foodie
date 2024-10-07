@@ -17,7 +17,9 @@ const session = require("express-session");
 
 // backend api
 const corsOptions = {
-  origin: ["http://localhost:5173"],
+  origin: ["http://localhost:5173"], // Allow requests from the React app
+  methods: "GET,HEAD,PUT,PATCH,POST",
+  credentials: true,
 };
 
 // passport call
