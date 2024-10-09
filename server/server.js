@@ -83,26 +83,24 @@ app.post("/register", async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
-    // Check if user already exists (pseudo-check)
-    const existingUser = users.find((user) => user.email === email);
-    if (existingUser) {
-      return res.status(400).json({ error: "User already exists" });
-    }
-
     const hashedPassword = await bcrypt.hash(password, 10);
-    users.push({
-      id: Date.now().toString(),
-      name,
-      email,
-      password: hashedPassword,
-    });
 
-    console.log(users);
-    // Return a success response
-    return res.status(201).json({ message: "User registered successfully" });
+    // Insert the new user into the database
+    db.query(
+      "INSERT INTO users (name, email, password) VALUES (?, ?, ?)",
+      [name, email, hashedPassword],
+      (err, results) => {
+        if (err) {
+          console.error("Error inserting user into the database:", err.message);
+          return res.redirect("/register"); // Redirect if there's an error
+        }
+        console.log("User registered successfully:", results.insertId);
+        res.redirect("/login"); // Redirect after successful registration
+      }
+    );
   } catch (e) {
-    console.error(e);
-    return res.status(500).json({ error: "Internal Server Error" });
+    console.error("Registration error:", e);
+    res.redirect("/register"); // Redirect if there's an error
   }
 });
 
