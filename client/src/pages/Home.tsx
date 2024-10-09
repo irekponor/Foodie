@@ -16,7 +16,6 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
   const [showCart, setShowCart] = useState(false);
   const navigate = useNavigate();
-
   useEffect(() => {
     const isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
     if (!isAuthenticated) {
