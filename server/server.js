@@ -111,10 +111,66 @@ app.post("/register", async (req, res) => {
   }
 });
 
+// login post configure
+app.post("/login", (req, res, next) => {
+  const { email, password } = req.body;
+
+  // Check if user exists
+  db.query("SELECT * FROM users WHERE email = ?", [email], (err, results) => {
+    if (err) {
+      console.error("Database query error:", err);
+      return res.status(500).json({ error: "Internal Server Error" });
+    }
+
+    if (results.length === 0) {
+      return res.status(401).json({ error: "User not found" });
+    }
+
+    const user = results[0];
+
+    // Compare password with hashed password in the database
+    bcrypt.compare(password, user.password, (err, isMatch) => {
+      if (err) {
+        console.error("Password comparison error:", err);
+        return res.status(500).json({ error: "Internal Server Error" });
+      }
+
+      if (!isMatch) {
+        return res.status(401).json({ error: "Invalid credentials" });
+      }
+
+      // If password is correct, log the user in
+      req.logIn(user, (err) => {
+        if (err) return next(err);
+        return res.json({ message: "Login successful" });
+      });
+    });
+  });
+});
+
+//session handling
+app.get("/protected-route", checkAuthenticated, (req, res) => {
+  res.json({ message: "This is a protected route!" });
+});
+
 // api test route
 app.get("/api", (req, res) => {
   res.json({ food: ["node", "broo", "sardine"] });
 });
+
+function checkAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect("/login");
+}
+
+function checkNotAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return res.redirect("/");
+  }
+  next();
+}
 
 // server
 app.listen(7000, () => {
