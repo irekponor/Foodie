@@ -165,13 +165,6 @@ function checkAuthenticated(req, res, next) {
   res.redirect("/login");
 }
 
-function checkNotAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    return res.redirect("/");
-  }
-  next();
-}
-
 // server
 app.listen(7000, () => {
   console.log("listening.....");
