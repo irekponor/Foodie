@@ -83,24 +83,45 @@ app.post("/register", async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Insert the new user into the database
-    db.query(
-      "INSERT INTO users (name, email, password) VALUES (?, ?, ?)",
-      [name, email, hashedPassword],
-      (err, results) => {
-        if (err) {
-          console.error("Error inserting user into the database:", err.message);
-          return res.redirect("/register"); // Redirect if there's an error
-        }
-        console.log("User registered successfully:", results.insertId);
-        res.redirect("/login"); // Redirect after successful registration
+    // Check if user already exists in the database
+    db.query("SELECT * FROM users WHERE email = ?", [email], (err, results) => {
+      if (err) {
+        console.error("Database query error:", err);
+        return res.status(500).json({ error: "Internal Server Error" });
       }
-    );
+
+      if (results.length > 0) {
+        return res.status(400).json({ error: "User already exists" });
+      }
+
+      // Hash password
+      bcrypt.hash(password, 10, (err, hashedPassword) => {
+        if (err) {
+          console.error("Password hashing error:", err);
+          return res.status(500).json({ error: "Internal Server Error" });
+        }
+
+        // Insert the new user into the database
+        db.query(
+          "INSERT INTO users (name, email, password) VALUES (?, ?, ?)",
+          [name, email, hashedPassword],
+          (err, results) => {
+            if (err) {
+              console.error(
+                "Error inserting user into the database:",
+                err.message
+              );
+              return res.status(500).json({ error: "Internal Server Error" });
+            }
+            console.log("User registered successfully:", results.insertId);
+            res.status(201).json({ message: "User registered successfully" });
+          }
+        );
+      });
+    });
   } catch (e) {
     console.error("Registration error:", e);
-    res.redirect("/register"); // Redirect if there's an error
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
