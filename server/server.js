@@ -148,10 +148,29 @@ app.post("/login", (req, res, next) => {
   });
 });
 
+//session handling
+app.get("/protected-route", checkAuthenticated, (req, res) => {
+  res.json({ message: "This is a protected route!" });
+});
+
 // api test route
 app.get("/api", (req, res) => {
   res.json({ food: ["node", "broo", "sardine"] });
 });
+
+function checkAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect("/login");
+}
+
+function checkNotAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return res.redirect("/");
+  }
+  next();
+}
 
 // server
 app.listen(7000, () => {
