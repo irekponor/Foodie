@@ -16,6 +16,23 @@ const initializePassport = require("./passport");
 const flash = require("express-flash");
 const session = require("express-session");
 
+// Start a connection to the database
+const db = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+});
+
+// Connect to the database
+db.connect((err) => {
+  if (err) {
+    console.error("Database connection failed:", err.stack);
+    return;
+  }
+  console.log("Connected to database.");
+});
+
 // backend api
 const corsOptions = {
   origin: ["http://localhost:5173"], // Allow requests from the React app
@@ -95,4 +112,6 @@ app.get("/api", (req, res) => {
 });
 
 // server
-app.listen("7000");
+app.listen(7000, () => {
+  console.log("listening.....");
+});
