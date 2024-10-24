@@ -27,6 +27,7 @@ const Login: React.FC = () => {
       });
 
       if (response.ok) {
+        localStorage.setItem("isAuthenticated", "true"); // Store authentication status
         // Redirect on successful login
         navigate("/"); // Redirect to home.tsx
       } else {
