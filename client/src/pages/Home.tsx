@@ -8,7 +8,7 @@ import Banner from "../components/Banner";
 import Blog from "../components/Blog";
 import News from "../components/News";
 import Footer from "../components/Footer";
-import { CartContextProvider } from "../context/CartContext";
+import { CartContextProvider } from "../context/cartContext";
 import Cart from "../components/Cart";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
