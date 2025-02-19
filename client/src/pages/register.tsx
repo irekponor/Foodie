@@ -27,7 +27,7 @@ const Register: React.FC = () => {
       });
 
       if (response.ok) {
-        navigate("/Login");
+        navigate("/login");
       } else {
         const errorData = await response.json();
         setError(errorData.error || "Registration failed.");
@@ -93,7 +93,7 @@ const Register: React.FC = () => {
           <div className="text-center">
             <p className="mt-4">
               Already registered?
-              <a className="text-color1" href="/Login">
+              <a className="text-color1" href="/login">
                 Login
               </a>
             </p>
