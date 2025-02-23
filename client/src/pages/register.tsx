@@ -93,7 +93,7 @@ const Register: React.FC = () => {
           <div className="text-center">
             <p className="mt-4">
               Already registered?
-              <a className="text-color1" href="/">
+              <a className="text-color1" href="/logins">
                 Login
               </a>
             </p>
