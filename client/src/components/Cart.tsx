@@ -37,9 +37,11 @@ const Cart = ({ setShowCart }: { setShowCart: (show: boolean) => void }) => {
             View Cart
           </button>
         </a>
-        <button className="bg-color1 text-white text-center w-full rounded-3xl py-2 hover:bg-color2">
-          Check Out
-        </button>
+        <a href="*">
+          <button className="bg-color1 text-white text-center w-full rounded-3xl py-2 hover:bg-color2">
+            Check Out
+          </button>
+        </a>
       </div>
     </div>
   );
