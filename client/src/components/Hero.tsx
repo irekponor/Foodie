@@ -25,7 +25,7 @@ const Hero = () => {
             <div className="font-medium text-gray-200 text-2xl sm:text-4xl pb-4 sm:pb-8">
               $24.99
             </div>
-            <a href="*">
+            <a href="*" className="no-underline">
               <div
                 className="bg-color2 hover:bg-color1 text-white rounded-full w-fit flex items-center 
             gap-4 px-4 py-2 text-[14px] sm:px-6 sm:py-3 cursor-pointer"
