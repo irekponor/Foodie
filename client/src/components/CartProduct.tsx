@@ -18,8 +18,7 @@ const CartProduct: React.FC<PropsType> = ({ img, name, price, onRemove }) => {
         </div>
       </div>
 
-      {/* Add onClick to remove the item */}
-      <RxCross1 className="cursor-pointer text-red-500" onClick={onRemove} />
+      <RxCross1 className="cursor-pointer" onClick={onRemove} />
     </div>
   );
 };

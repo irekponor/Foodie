@@ -3,7 +3,7 @@ import { RxCross1 } from "react-icons/rx";
 import CartProduct from "./CartProduct";
 
 const Cart = ({ setShowCart }: { setShowCart: (show: boolean) => void }) => {
-  const { product, removeFromCart } = useCartContext(); // Get remove function from context
+  const { product } = useCartContext();
 
   return (
     <div
@@ -23,13 +23,12 @@ const Cart = ({ setShowCart }: { setShowCart: (show: boolean) => void }) => {
         </h3>
 
         <div className="mt-6">
-          {product?.map((el) => (
+          {product?.map((el: unknown) => (
             <CartProduct
-              key={el.name}
-              img={el.img}
-              name={el.name}
-              price={el.price}
-              onRemove={() => removeFromCart(el.name)} // Pass remove function
+              key={(el as { name: string }).name}
+              img={(el as { img: string }).img}
+              name={(el as { name: string }).name}
+              price={(el as { price: string }).price}
             />
           ))}
         </div>
