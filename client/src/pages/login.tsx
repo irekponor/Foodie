@@ -10,7 +10,7 @@ const Login: React.FC = () => {
   useEffect(() => {
     const isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
     if (isAuthenticated) {
-      navigate("/");
+      navigate("/home");
     }
   }, [navigate]);
 
