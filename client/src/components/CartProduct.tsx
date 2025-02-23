@@ -4,7 +4,7 @@ interface PropsType {
   img: string;
   name: string;
   price: string;
-  onRemove: () => void; // Function to remove item
+  onRemove: () => void;
 }
 
 const CartProduct: React.FC<PropsType> = ({ img, name, price, onRemove }) => {

@@ -20,6 +20,7 @@ export const CartContextProvider = ({ children }: ICartContextProvider) => {
   const addToCart = (cart: unknown) => {
     if (typeof cart === "object" && cart !== null) {
       // Type checking before using unknown
+
       setProduct((prevCart: unknown[]) => [...prevCart, cart]);
     } else {
       console.error("Invalid cart item");
