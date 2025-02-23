@@ -1,33 +1,38 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, useState } from "react";
 
-interface ICartContext {
-  product: unknown[];
-  addToCart: (cart: unknown) => void;
+interface ProductType {
+  img: string;
+  name: string;
+  price: string;
 }
 
-const CartContext = createContext<ICartContext>({
-  product: [],
-  addToCart: () => {},
-});
-
-interface ICartContextProvider {
-  children: ReactNode;
+interface CartContextType {
+  product: ProductType[];
+  addToCart: (item: ProductType) => void;
+  removeFromCart: (name: string) => void; //  Add removeFromCart function
 }
 
-export const CartContextProvider = ({ children }: ICartContextProvider) => {
-  const [product, setProduct] = useState<unknown[]>([]);
+const CartContext = createContext<CartContextType | null>(null);
 
-  const addToCart = (cart: unknown) => {
-    if (typeof cart === "object" && cart !== null) {
-      // Type checking before using unknown
-      setProduct((prevCart: unknown[]) => [...prevCart, cart]);
-    } else {
-      console.error("Invalid cart item");
-    }
+export const CartContextProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  const [product, setProduct] = useState<ProductType[]>([]);
+
+  // Function to remove an item from the cart
+  const removeFromCart = (name: string) => {
+    setProduct((prev) => prev.filter((item) => item.name !== name));
+  };
+
+  // Function to add an item to the cart
+  const addToCart = (item: ProductType) => {
+    setProduct((prev) => [...prev, item]);
   };
 
   return (
-    <CartContext.Provider value={{ product, addToCart }}>
+    <CartContext.Provider value={{ product, addToCart, removeFromCart }}>
       {children}
     </CartContext.Provider>
   );
