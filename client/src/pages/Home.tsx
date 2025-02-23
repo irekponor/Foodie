@@ -19,7 +19,7 @@ const Home = () => {
   useEffect(() => {
     const isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
     if (!isAuthenticated) {
-      navigate("/"); //redirerct user to login if not authenticated
+      navigate("/login"); //redirerct user to login if not authenticated
     }
   }, [navigate]);
 

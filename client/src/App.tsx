@@ -20,10 +20,10 @@ function App() {
   return (
     <>
       <Routes>
-        <Route index element={<Login />} />
-        <Route path="/" element={<Login />} />
+        <Route index element={<Home />} />
+        <Route path="/" element={<Home />} />
+        <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
-        <Route path="home" element={<Home />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
