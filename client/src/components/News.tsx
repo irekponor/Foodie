@@ -20,12 +20,14 @@ const News = () => {
             type="text"
             placeholder="Your Email Address"
           />
-          <button
-            className="bg-color2 absolute top-[50%] right-2 translate-y-[-50%] py-2 px-4
+          <a href="*">
+            <button
+              className="bg-color2 absolute top-[50%] right-2 translate-y-[-50%] py-2 px-4
            rounded-full hover:bg-color1"
-          >
-            Suscribe!
-          </button>
+            >
+              Suscribe!
+            </button>
+          </a>
         </div>
       </div>
     </div>
