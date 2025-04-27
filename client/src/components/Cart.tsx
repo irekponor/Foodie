@@ -25,7 +25,7 @@ const Cart = ({ setShowCart }: { setShowCart: (show: boolean) => void }) => {
         <div className="mt-6">
           {product?.map((el) => (
             <CartProduct
-          \    key={el.name}
+              key={el.name}
               img={el.img}
               name={el.name}
               price={el.price}
